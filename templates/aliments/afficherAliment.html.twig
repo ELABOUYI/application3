@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Affichage d'aliment {% endblock %}
+{% block monTitre %} Caractéristique de l'aliment {{aliment.nom}} {% endblock %}
+{% block body %}
+<div class="container">
+    <div class="row">
+    
+        <div class="col-6 align-item-left" style="border: 1px solid red;">
+            <img src="{{asset('images/' ~ aliment.image)}}" class="img-fluid">
+        </div>
+        <div class="col-6 text-center">
+            <div>
+                <ul>
+                    <li>Calories : {{aliment.calorie}}</li>
+                    <li>Proteine : {{aliment.proteine}}</li>
+                    <li>Glucide : {{aliment.glucide}}</li>
+                    <li>Lipide : {{aliment.lipide}}</li>
+                    <li>Prix : {{aliment.prix}} $ </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

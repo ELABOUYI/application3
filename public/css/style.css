@@ -1,0 +1,17 @@
+.imgAliment
+{
+    width: 150px;
+    height: 140px;
+    object-fit: cover;
+}
+.imgAlimentAdmin
+{
+    vertical-align: middle;
+    border-style: none;
+    width: 77px;    
+}
+img {
+    vertical-align: middle;
+    border-style: none;
+    width: 77px;
+}

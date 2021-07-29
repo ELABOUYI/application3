@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Admin{% endblock %}
+
+{% block monTitre %}Administration{% endblock %}
+{% block body %}
+<a class="btn btn-success" href="{{path("admin_aliment_creation")}}">Ajoutter</a>
+<table class="table table-fluid">
+    <tr class="table-primary">
+        <td> Image </td>
+        <td> Aliment </td>
+        <td> Prix </td>
+        <td> Calories </td>
+        <td> Protéines </td>
+        <td> Glucides </td>
+        <td> Lipides </td>
+        <td> Actions </td>
+    </tr>
+    {% for aliment in aliments %}
+    <tr>
+        <td><img src="{{asset('images/aliments/' ~ aliment.image)}}" style="width: 70px;"> </td>
+        <td> <strong>{{aliment.nom}}</strong></td>
+        <td>{{aliment.prix}}</td>
+        <td>{{aliment.calorie}}</td>
+        <td>{{aliment.proteine}}</td>
+        <td>{{aliment.glucide}}</td>
+        <td>{{aliment.lipide}}</td>
+        <td>
+            <a href="{{path("admin_aliment_modification",{'id':aliment.id})}}" class="btn btn-secondary"> Modifier</a>
+            <form method="POST" style="display: inline-block;" action="{{path('admin_aliment_suppression', {'id':aliment.id})}}" onsubmit="return confirm('Confirmer la suppression ?')">
+                <input type="submit" class="btn btn-danger" value="Supprimer">
+                <input type="hidden" name="_method" value="SUP">
+                <input type="hidden" name="_token" value="{{csrf_token('SUP' ~ aliment.id)}}">
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
